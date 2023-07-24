@@ -1,0 +1,10 @@
+version: "3"
+services:
+  server:
+    container_name: server
+    build:
+      context: ../
+      dockerfile: ./docker/server.dockerfile
+    volumes:
+      - ../:/var/www
+    working_dir: /var/www
