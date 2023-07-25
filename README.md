@@ -26,7 +26,7 @@ cat .env.example > .env
 
 ### docker compose up
 ```
-sudo docker-compose -f docker/docker-compose.yml up
+sudo docker-compose -f docker/docker-compose.yml --env-file .env up
 ```
 
 ### Run database migrations 
