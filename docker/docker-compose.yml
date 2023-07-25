@@ -13,7 +13,29 @@ services:
       - demo-network
     ports:
       - "8080:8080"
+    links:
+      - "database"
+    depends_on:
+      - "database"
     command: php artisan serve --host 0.0.0.0 --port 8080
+  
+  database:
+    container_name: database
+    networks:
+      - demo-network
+    image: mysql:8
+    volumes:
+      - demodb:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "33006:3306"
+    
+volumes:
+  demodb:
 
 networks:
   demo-network:
