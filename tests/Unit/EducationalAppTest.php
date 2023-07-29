@@ -4,12 +4,12 @@ namespace Tests\Unit;
 
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
-
-use function PHPSTORM_META\map;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EducationalAppTest extends TestCase
 {
-    // TODO: run tests in transaction
+    use DatabaseTransactions;
+
     public function test_get_all_students_endpoint()
     {
         $response = $this->getJson('/api/students');
