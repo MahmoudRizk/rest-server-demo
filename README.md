@@ -61,11 +61,11 @@ Open the browser:
 
 # Assignment
 
-As we discussed later in REST API session, this app is a simple app for an educational system. There are three main entities <b>Students</b>, <b>Courses</b> & <b>Grades</b>, You can find the database schema under ```database/migrations``` directory. For each entity there will be a migration file defining its table's schema.
+As we discussed later in the REST API session, this is a simple app for an educational system. There are three main entities <b>Students</b>, <b>Courses</b> & <b>Grades</b>, You can find the database schema under ```database/migrations``` directory. For each entity there will be a migration file defining its table schema.
 
-You will be required to implement APIs for each of those entities enabling <b>CRUD</b> operations. For each required API, You will find a <b>TODO</b> in ```routes/api.php``` file where you can implement the required API.
+You are required to implement APIs for each of those entities enabling <b>CRUD</b> operations. For each API You will find a <b>TODO</b> in ```routes/api.php``` file where you can implement the required API.
 
-Each API is having a unit test that will be failing by default since there are not endpoints implemented yet. After you successfully implement the endpoints all the unit tests shall pass successfully. 
+Each API is having a unit test that will be failing by default since there are no endpoints implemented yet. After you successfully implement the endpoints all the unit tests shall pass successfully. 
 
 You will need first to read about routes & executing SQL queries in Laravel docs before starting the assignment.
 
