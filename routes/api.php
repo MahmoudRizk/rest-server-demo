@@ -70,6 +70,27 @@ Route::get('/students', function (Request $request) {
                 }
             }
 */
+Route::post('/students', function (Request $request) {  
+    $requestData = $request->json();
+    
+    $studentData = [    
+        'name' => $requestData->get('name'),
+        'email' => $requestData->get('email'),
+        'phone' => $requestData->get('phone'),
+    ];
+
+    $id = DB::table('students')->insertGetId($studentData);
+
+    return response()->json(    
+        [   
+            'data' => [ 
+                'id' => $id
+            ]
+        ],
+            200
+    );
+
+});
 
 /* 
     * TODO: Get student details by id
@@ -93,6 +114,26 @@ Route::get('/students', function (Request $request) {
                     "data": {}
                 }
 */
+Route::get('/students/{id}', function (Request $request, string $id) {  
+    $rawData = DB::select(DB::raw("select * from students where id = $id"));
+
+    if ($rawData) { 
+        return response()->json(    
+            [   
+                'data' => [ 
+                    'id' => $rawData[0]->id,
+                    'name' => $rawData[0]->name,
+                    'email' => $rawData[0]->email,
+                    'phone' => $rawData[0]->phone
+                ]
+            ],
+                200
+        );
+    }
+
+    return response()->json(['data' => []], 404);
+});
+
 
 /*
     * TODO: Update student data
@@ -115,6 +156,39 @@ Route::get('/students', function (Request $request) {
                 }
             }
  */
+Route::put('/students/{id}', function (Request $request, string $id) {  
+    $updatedAttributes = [];
+
+    $requestData = $request->json();
+    
+    if ($requestData->get('name')) {    
+        $updatedAttributes['name'] = $requestData->get('name'); 
+    }
+    if ($requestData->get('email')) {    
+        $updatedAttributes['email'] = $requestData->get('email'); 
+    }
+    if ($requestData->get('phone')) {    
+        $updatedAttributes['phone'] = $requestData->get('phone'); 
+    }
+
+    $affected = DB::table('students')
+                ->where('id', $id)
+                ->update($updatedAttributes);
+
+    $updatedStudent = $rawData = DB::select(DB::raw("select * from students where id = $id"));
+
+    return response()->json(    
+        [   
+            'data' => [ 
+                'id' => $rawData[0]->id,
+                'name' => $rawData[0]->name,
+                'email' => $rawData[0]->email,
+                'phone' => $rawData[0]->phone
+            ]
+        ],
+            200
+    );
+});
 
 
  /*
@@ -147,6 +221,27 @@ Route::get('/students', function (Request $request) {
             ]
         }
   */
+  Route::get('/grades', function (Request $request) {
+
+      $rawData = DB::select(DB::raw('select * from grades;'));
+
+      $responseData = [];
+
+      foreach ($rawData as $rd) {
+        array_push($responseData, [
+            'id' => $rd->id,
+            'course_id' => $rd->course_id,
+            'student_id' => $rd->student_id,
+            'grade' => $rd->grade,
+        ]);
+      }
+
+      $statusCode = 200;
+
+      return response()->json([  
+            'data' => $responseData
+      ], $statusCode);
+  });
 
   /*
    * TODO: Get grades for specific student only.
