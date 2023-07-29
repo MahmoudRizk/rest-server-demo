@@ -18,12 +18,6 @@ git clone https://github.com/MahmoudRizk/rest-server-demo.git
 
 ```cd /<path>/rest-server-demo```
 
-### Copy .env.example to .env file
-
-```
-cat .env.example > .env
-```
-
 ### docker compose up
 ```
 sudo docker-compose -f docker/docker-compose.yml --env-file .env up
@@ -35,11 +29,6 @@ sudo docker exec -it server php artisan migrate
 ```
 
 ## Windows
-
-### Copy .env.example to .env file
-
-* Create new .env file.
-* Copy & Paste the content of .env.example to .env file.
 
 ### Enable resources file sharing from docker desktop
 
