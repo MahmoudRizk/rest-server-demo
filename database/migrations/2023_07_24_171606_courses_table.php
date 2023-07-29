@@ -13,7 +13,7 @@ return new class extends Migration
     public function up()
     {
         DB::statement("CREATE TABLE courses(    
-            id INT primary key not null,
+            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             name TEXT not null
         )");
 
