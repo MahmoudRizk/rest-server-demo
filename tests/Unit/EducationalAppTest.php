@@ -162,7 +162,7 @@ class EducationalAppTest extends TestCase
     }
 
 
-    public function get_all_grades()
+    public function test_get_all_grades()
     {
         $response = $this->getJson(
             '/api/grades'
@@ -182,7 +182,7 @@ class EducationalAppTest extends TestCase
     }
 
 
-    public function get_grades_for_specific_student_only()
+    public function test_get_grades_for_specific_student_only()
     {
         $response = $this->getJson('/api/students/1/grades');
 
@@ -200,7 +200,7 @@ class EducationalAppTest extends TestCase
     }
 
 
-    public function get_specific_grade_for_specific_student()
+    public function test_get_specific_grade_for_specific_student()
     {
         $response = $this->getJson('/api/students/1/grades/1');
 
