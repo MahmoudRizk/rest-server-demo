@@ -94,7 +94,7 @@ php artisan test
 
 ## Browsing database
 
-To browse the database & observe changes to the database, you can install any SQL client like DBeaver or any alternative and connect to the database.
+To browse the database & observe changes made, you can install any SQL client like DBeaver or any alternative and connect to the database.
 
 We are using <b>mysql</b> for this assignment & credentials for the database can be found in .env file prefixed with <b>DB_*</b>. You will need DB_USERNAME & DB_PASSWORD values. Don't forget to change the <b>port to 33006</b>.
 
