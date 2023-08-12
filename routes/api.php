@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 
 
 // FOR SIMPLICITY WE WON'T IMPLEMENT DELETE OPERATIONS.
@@ -31,6 +32,8 @@ use Illuminate\Support\Facades\Route;
         }
  */
 Route::get('/students', function (Request $request) {
+    Log::info('Getting all students');
+    
     $rawData = DB::select(DB::raw("select id, name, email, phone from students"));
 
     $responseData = [];
